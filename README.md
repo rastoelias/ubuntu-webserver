@@ -3,6 +3,7 @@ Ansible playbook for initial Ubuntu 18.04 webserver setup.
 
 * Ubuntu server 18.04
 * Apache 2
+* PHP 7.2
 
 ## Requirements
 * SSH Keys on the client machine.

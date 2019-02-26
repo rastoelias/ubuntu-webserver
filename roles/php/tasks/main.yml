@@ -1,0 +1,31 @@
+---
+
+- name: Install PHP and extensions
+  apt:
+    name:
+      - php
+      - php-mysql
+      - php-xml
+      - php-gd
+      - php-mbstring
+    state: present
+  notify:
+    - Reload apache
+
+- name: Set PHP `display_errors` to `{{ PHP_DISPLAY_ERRORS }}`
+  ini_file:
+    dest: /etc/php/7.2/apache2/php.ini
+    section: PHP
+    option: display_errors
+    value: '{{ PHP_DISPLAY_ERRORS }}'
+  notify:
+    - Reload apache
+
+- name: Set PHP `memory_limit` to `{{ PHP_MEMORY_LIMIT }}`
+  ini_file:
+    dest: /etc/php/7.2/apache2/php.ini
+    section: PHP
+    option: memory_limit
+    value: '{{ PHP_MEMORY_LIMIT }}'
+  notify:
+    - Reload apache
