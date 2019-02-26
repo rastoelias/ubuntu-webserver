@@ -10,6 +10,7 @@ Ansible playbook for initial Ubuntu 18.04 webserver setup.
 * A machine with the [Ubuntu server](http://cdimage.ubuntu.com/releases/18.04.2/release/) installed.
 * SSH Key-Based Authentication your server.
 * Ansible 2.7+ on your local machine.
+* Mkpassword on your local machine.
 
 ## Roles
 * Set timezone to `TIMEZONE`
