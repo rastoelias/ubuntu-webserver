@@ -1,0 +1,17 @@
+---
+
+- name: Make sure `/usr/share/zoneinfo/{{ TIMEZONE }}` exists
+  stat:
+    path: /usr/share/zoneinfo/{{ TIMEZONE }}
+  register: timezone_exists
+
+- name: Fail if `/usr/share/zoneinfo/{{ TIMEZONE }}` does not exists
+  fail:
+    msg: 'Failed: /usr/share/zoneinfo/{{ TIMEZONE }} does not exists'
+  when: timezone_exists.stat.exists == false
+
+- name: If not fails, set timezone to `{{ TIMEZONE }}`.
+  timezone:
+    name: '{{ TIMEZONE }}'
+  when: timezone_exists.stat.exists
+  notify: Restart cron
